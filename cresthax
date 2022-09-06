@@ -1,0 +1,246 @@
+#Creston Home Style Dashboard
+
+title: Home
+kiosk_mode:
+  kiosk: false
+  mobile_settings:
+    hide_header: true
+  tablet_settings:
+    hide_header: false
+views:
+  - theme: iOS Theme
+    path: default_view
+    title: Home
+    icon: mdi:home
+    type: custom:grid-layout
+    layout:
+      margin: 0px 75px 0px
+    badges: []
+    cards:
+      - square: false
+        columns: 2
+        type: grid
+        cards:
+          - type: custom:mushroom-title-card
+            title: |-
+
+
+
+              Kitchen
+            subtitle: |-
+              Lights are {{states("light.kitchen_light_2")}}
+              Sonos is {{states("media_player.kichen")}}
+              Dishwasher is {{states("sensor.dishwasher_yaml")}}
+              Washing Machine is {{states("sensor.washing_machine_yaml")}}
+
+              {{states("sensor.bedroom_current_temperature")}}°
+          - type: picture
+            image: >-
+              https://epixx.co.uk/untitled%20folder/home-d68fbeac-6f76-4bf3-a4f9-0643a56f1dab.jpg
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            theme: iOS Theme
+      - type: custom:mushroom-title-card
+        title: ''
+        subtitle: QUICK ACTIONS
+      - square: false
+        columns: 4
+        type: grid
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: scene.garden_bright
+            name: Garden Bright
+            icon: mdi:lightbulb-group
+            secondary_info: none
+            icon_color: orange
+          - type: custom:mushroom-entity-card
+            entity: scene.master_bedroom_all_off
+            name: Master Bed All Off
+          - type: custom:mushroom-entity-card
+            entity: switch.sprinklers
+      - type: custom:mushroom-title-card
+        title: ''
+        subtitle: ROOM SERVICES
+      - square: false
+        columns: 4
+        type: grid
+        cards:
+          - type: custom:mushroom-light-card
+            entity: light.kitchen_light_2
+            use_light_color: true
+            name: Lights
+            fill_container: true
+            secondary_info: state
+            show_color_control: false
+            show_color_temp_control: true
+          - type: media-control
+            entity: media_player.kichen
+            theme: iOS Theme
+          - type: media-control
+            theme: iOS Theme
+            entity: media_player.kitchen_touch_screen
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            image: https://demo.home-assistant.io/stub_config/bedroom.png
+            camera_image: camera.192_168_10_10
+            entity: camera.192_168_10_10
+          - type: custom:mushroom-entity-card
+            entity: sensor.washing_machine_yaml
+            icon: mdi:washing-machine
+            name: Washing Machine
+            fill_container: true
+            secondary_info: state
+          - type: custom:mushroom-entity-card
+            entity: sensor.dishwasher_yaml
+            fill_container: true
+            name: Dishwasher
+            icon: mdi:dishwasher
+          - type: custom:mushroom-light-card
+            entity: light.hue_color_lamp_1
+            fill_container: true
+            name: Lounge Ceiling
+            use_light_color: true
+            show_brightness_control: true
+            show_color_control: false
+            show_color_temp_control: true
+            icon: mdi:ceiling-light-multiple-outline
+          - type: media-control
+            entity: media_player.lounge
+            theme: iOS Theme
+      - type: custom:mushroom-title-card
+        title: ''
+      - square: false
+        columns: 5
+        type: grid
+        cards:
+          - type: custom:mushroom-cover-card
+            name: Kitchen
+            icon: mdi:air-purifier
+            show_buttons_control: true
+            fill_container: false
+          - type: custom:mushroom-entity-card
+            entity: person.admin
+            icon: mdi:home
+            icon_color: red
+            name: Home
+            secondary_info: none
+          - type: custom:mushroom-entity-card
+            entity: person.admin
+            icon: mdi:view-grid
+            name: Rooms
+            secondary_info: none
+          - type: custom:mushroom-entity-card
+            entity: person.admin
+            name: More
+            icon: mdi:dots-horizontal
+            secondary_info: none
+          - type: custom:mushroom-cover-card
+  - theme: iOS Theme
+    title: Rooms
+    path: rooms
+    icon: mdi:view-grid-plus
+    type: sidebar
+    badges: []
+    cards:
+      - type: picture-glance
+        title: Kitchen
+        image: https://demo.home-assistant.io/stub_config/kitchen.png
+        entities:
+          - binary_sensor.b4rn_router
+          - binary_sensor.lutron_ra2_hub
+        view_layout:
+          position: main
+  - theme: iOS Theme
+    title: Menu
+    path: menu
+    icon: mdi:dots-horizontal
+    type: panel
+    badges: []
+    cards: []
+  - theme: iOS Theme
+    title: Energy
+    path: energy
+    icon: mdi:lightning-bolt
+    type: custom:grid-layout
+    layout:
+      margin: 0px 75px 0px
+    badges: []
+    cards:
+      - square: false
+        columns: 3
+        type: grid
+        cards:
+          - type: custom:mushroom-title-card
+            title: |-
+
+
+
+              Energy
+            subtitle: >-
+              Solar Battery is {{states("sensor.bens_ipad_battery_level")}}%
+              Charged
+
+              Grid Load is
+              {{states("sensor.shellyem_34945470fc52_channel_1_power")}} Watts
+
+              Solar is generating {{states("sensor.power_production_now")}}
+              Watts
+          - chart_type: line
+            period: hour
+            days_to_show: 1
+            type: statistics-graph
+            entities:
+              - sensor.shellyem_34945470fc52_channel_1_power
+              - sensor.power_production_now
+            stat_types:
+              - mean
+          - type: custom:power-flow-card
+            entities:
+              battery:
+                consumption: sensor.battery_out
+                production: sensor.battery_in
+              battery_charge: sensor.iphone_battery_level
+              grid:
+                consumption: sensor.shellyem_34945470fc52_channel_1_power
+                production: sensor.shellyem_34945470fc52_channel_1_energy_returned
+              solar: sensor.power_production_now
+      - chart_type: line
+        period: hour
+        days_to_show: 1
+        type: statistics-graph
+        entities:
+          - sensor.shellyem_34945470fc52_channel_1_power
+          - sensor.power_production_now
+        stat_types:
+          - mean
+        title: Grid Vs Solar Forecast
+  - theme: Backend-selected
+    title: Sandbox
+    path: sandbox
+    icon: mdi:timer-sand
+    type: custom:grid-layout
+    layout:
+      margin: 0px 75px 0px
+    badges: []
+    cards:
+      - camera_view: auto
+        type: picture-glance
+        title: Kitchen
+        image: https://demo.home-assistant.io/stub_config/kitchen.png
+        entities:
+          - entity: light.kitchen_light_2
+          - entity: sensor.washing_machine
+          - entity: sensor.dishwasher_yaml
+          - entity: sensor.bedroom_current_temperature
+        theme: iOS Theme
+      - type: custom:mushroom-title-card
+        title: Kitchen
+        subtitle: |
+          Lights are {{states("light.kitchen_light_2")}}
+          Media is {{states("media_player.kichen")}}
+          Dishwasher is {{states("sensor.dishwasher_yaml")}}
+          Washing Machine is {{states("sensor.washing_machine_yaml")}}
