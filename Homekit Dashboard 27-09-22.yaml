@@ -1,0 +1,698 @@
+title: Home
+kiosk_mode:
+  mobile_settings:
+    hide_header: true
+    hide_sidebar: true
+background: >-
+  center / cover no-repeat url("https://wallpaperaccess.com/full/8298356.jpg")
+  fixed
+views:
+  - theme: ios-dark-mode
+    path: default_view
+    title: Home
+    type: custom:vertical-layout
+    layout:
+      margin: 0px 10px 0px
+    badges: []
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: action
+            icon: mdi:broadcast
+          - type: entity
+            entity: person.admin
+            name: Ben
+            content_info: name
+            use_entity_picture: false
+          - type: action
+            icon: mdi:medication-outline
+            tap_action:
+              action: navigate
+              navigation_path: system-health
+          - type: menu
+        alignment: end
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: The Green
+        styles:
+          card:
+            - width: 300px
+            - height: 50px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 0px
+            - font-weight: bold
+            - font-size: 30px
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: weather
+            entity: weather.home
+            show_conditions: true
+            show_temperature: true
+          - type: entity
+            entity: sensor.shellyem_34945470fc52_channel_1_power
+            icon: mdi:transmission-tower
+            icon_color: amber
+          - type: entity
+            entity: alarm_control_panel.cctv_system
+            icon_color: deep-purple
+            content_info: state
+            icon: mdi:cctv
+            use_entity_picture: false
+            name: CCTV
+            tap_action:
+              action: none
+          - type: entity
+            entity: sensor.bedroom_current_temperature
+            icon_color: orange
+          - type: entity
+            entity: switch.adaptive_lighting_19_the_green_circadian
+            name: Circadian
+        alignment: justify
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        icon: mdi:chevron-right
+        show_state: false
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-cresthax/cctv
+        name: Cameras
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 0px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+      - show_state: false
+        show_name: true
+        camera_view: auto
+        type: picture-entity
+        entity: camera.drive_main
+        image: https://demo.home-assistant.io/stub_config/bedroom.png
+        camera_image: camera.drive_main
+        name: Drive
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: Security Systems
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 1px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-alarm-control-panel-card
+            entity: alarm_control_panel.house_alarm
+            states:
+              - armed_home
+              - armed_away
+            name: Alarm System
+          - type: custom:mushroom-alarm-control-panel-card
+            entity: alarm_control_panel.cctv_system
+            states:
+              - armed_home
+              - armed_away
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: switch.infrared_mode
+            icon: mdi:lightning-bolt-circle
+            icon_color: red
+          - type: custom:mushroom-entity-card
+            entity: switch.warning_strobe
+            icon: mdi:alarm-light
+            icon_color: blue
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: Energy
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 2px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-cresthax/energy
+      - square: false
+        columns: 1
+        type: grid
+        cards:
+          - type: energy-distribution
+            link_dashboard: false
+          - type: energy-solar-graph
+          - type: energy-usage-graph
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: Lounge
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 2px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+      - square: false
+        columns: 2
+        type: grid
+        cards:
+          - type: custom:mini-media-player
+            entity: media_player.lounge_apple_tv
+            icon: mdi:apple
+            name: Apple TV
+            artwork: full-cover
+            info: scroll
+          - type: custom:mushroom-light-card
+            entity: light.hue_color_lamp_1
+            name: Ceiling
+            icon: mdi:ceiling-light
+            show_brightness_control: true
+            show_color_temp_control: true
+            collapsible_controls: true
+            fill_container: true
+          - type: custom:mini-media-player
+            entity: media_player.lounge
+            name: Homepod
+            info: scroll
+            artwork: full-cover
+            volume_stateless: false
+          - type: custom:mushroom-light-card
+            entity: light.hue_ambiance_light_1
+            name: Sofa Wash
+            icon: mdi:led-strip
+            show_brightness_control: true
+            show_color_temp_control: true
+            collapsible_controls: true
+          - type: custom:mushroom-light-card
+            entity: light.sofa_lamp_hanging
+            show_brightness_control: true
+          - type: custom:mushroom-light-card
+            entity: light.hue_color_lamp_1_2
+            show_brightness_control: true
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: Bedroom
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 2px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+      - square: false
+        columns: 2
+        type: grid
+        cards:
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_ceiling_speakers
+            name: Ceiling Speakers
+            icon: mdi:cast-audio-variant
+            artwork: full-cover
+            info: scroll
+          - type: custom:mushroom-light-card
+            entity: light.master_bedroom
+            name: Lights
+            fill_container: true
+            show_brightness_control: true
+            show_color_control: false
+            show_color_temp_control: true
+            collapsible_controls: true
+            icon: mdi:lightbulb-group
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_tv
+            name: TV
+            icon: mdi:cast-variant
+            artwork: full-cover
+            info: scroll
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: Kitchen
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 2px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+      - square: false
+        columns: 2
+        type: grid
+        cards:
+          - type: custom:mini-media-player
+            entity: media_player.kichen
+            artwork: full-cover
+            info: scroll
+          - type: custom:mushroom-light-card
+            entity: light.kitchen_light_2
+            fill_container: true
+          - type: custom:mushroom-entity-card
+            entity: sensor.washing_machine_yaml
+            name: Washing Machine
+            fill_container: true
+          - type: custom:mushroom-entity-card
+            entity: sensor.dishwasher_yaml
+            name: Dishwasher
+            fill_container: true
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: Hallway
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 2px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+      - square: false
+        columns: 2
+        type: grid
+        cards:
+          - type: custom:mushroom-climate-card
+            entity: climate.hallway
+            name: Nest
+            fill_container: true
+          - type: custom:mushroom-light-card
+            entity: light.hallway
+            name: Centre Light
+            show_brightness_control: true
+            show_color_temp_control: true
+            collapsible_controls: true
+  - theme: ios-dark-mode
+    title: Energy
+    path: energy
+    type: custom:vertical-layout
+    badges: []
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: back
+            icon: mdi:chevron-left
+          - type: action
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-cresthax
+            icon: mdi:home
+        alignment: justify
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: Energy
+        styles:
+          card:
+            - width: 300px
+            - height: 50px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 10px
+            - font-weight: bold
+            - font-size: 30px
+      - type: custom:mushroom-title-card
+        title: ''
+        subtitle: >-
+          Grid Load is
+          {{states("sensor.shellyem_34945470fc52_channel_1_power")}} watts
+
+          Solar Production is
+          {{states("sensor.shellyem_34945470fc52_channel_2_power")}} watts
+
+          Battery is {{states("sensor.iphone_battery_level")}}% charged
+      - square: false
+        columns: 1
+        type: grid
+        cards:
+          - type: energy-date-selection
+          - type: energy-distribution
+            link_dashboard: false
+          - type: energy-solar-graph
+          - type: energy-usage-graph
+          - type: energy-sources-table
+  - theme: ios-dark-mode
+    title: Cameras
+    path: cctv
+    icon: ''
+    type: custom:vertical-layout
+    layout:
+      margin: 0px 10px 0px
+    badges: []
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: back
+            icon: mdi:chevron-left
+          - type: menu
+        alignment: justify
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: Cameras
+        styles:
+          card:
+            - width: 300px
+            - height: 50px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 10px
+            - font-weight: bold
+            - font-size: 30px
+      - show_state: false
+        show_name: true
+        camera_view: auto
+        type: picture-entity
+        entity: camera.192_168_10_10
+        camera_image: camera.drive_main
+        theme: iOS Theme
+        name: Drive
+      - show_state: false
+        show_name: true
+        camera_view: auto
+        type: picture-entity
+        entity: camera.loft_test_bench_main
+        image: https://demo.home-assistant.io/stub_config/bedroom.png
+        theme: iOS Theme
+        name: Loft
+  - theme: ios-dark-mode
+    title: Health
+    path: system-health
+    icon: ''
+    type: custom:vertical-layout
+    badges: []
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: back
+            icon: mdi:chevron-left
+          - type: menu
+        alignment: justify
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        name: System Health
+        styles:
+          card:
+            - width: 300px
+            - height: 50px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 10px
+            - font-weight: bold
+            - font-size: 30px
+      - type: custom:mushroom-template-card
+        primary: Tap to Enter Monitoring Portal
+        secondary: ''
+        icon: mdi:monitor-edit
+        tap_action:
+          action: url
+          url_path: http://192.168.10.163:3001/dashboard
+        badge_color: ''
+        icon_color: Green
+      - type: history-graph
+        entities:
+          - entity: binary_sensor.wan
+        title: WAN Uptime
+        hours_to_show: 24
+        refresh_interval: 30
+      - type: custom:mushroom-template-card
+        primary: |
+          Tap to view device log.
+
+          Double Tap to Launch Web UI.
+        secondary: |-
+
+          Hold Device Tile to Reboot Device
+        icon: ''
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-cresthax/cctv
+        name: Core Network
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 10px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: binary_sensor.b4rn_router
+            name: B4RN Router
+            double_tap_action:
+              action: url
+              url_path: http://192.168.10.1:80
+            icon_color: green
+          - type: custom:mushroom-entity-card
+            entity: binary_sensor.hue_bridge
+            name: Hue Bridge
+            fill_container: true
+            icon_color: green
+            icon: mdi:lamps-outline
+            layout: horizontal
+            double_tap_action:
+              action: url
+              url_path: http://192.168.10.240:80
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: binary_sensor.hue_bridge
+            name: Hue Bridge
+            icon: mdi:home-lightbulb
+            double_tap_action:
+              action: url
+              url_path: http://192.168.10.140:80
+            icon_color: green
+          - type: custom:mushroom-entity-card
+            entity: binary_sensor.front_door_cctv_camera
+            name: Front Door CCTV
+            icon: mdi:cctv
+            double_tap_action:
+              action: url
+              url_path: http://192.168.10.10:80
+            icon_color: green
+      - type: custom:button-card
+        title: Hello
+        show_name: true
+        show_icon: false
+        show_state: false
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-cresthax/cctv
+        name: AV Devices
+        styles:
+          card:
+            - width: 300px
+            - height: 40px
+            - background: none
+            - box-shadow: none
+          name:
+            - justify-self: start
+            - margin-left: 10px
+            - margin-top: 10px
+            - font-weight: bold
+            - font-size: 18px
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: binary_sensor.ben_s_iphone
+            icon: mdi:cellphone-check
+            icon_color: green
+          - type: custom:mushroom-entity-card
+            entity: binary_sensor.evies_sonos
+            icon: mdi:speaker-multiple
+            icon_color: green
+  - theme: iOS Theme
+    title: Audio
+    path: audio
+    icon: mdi:cast-audio-variant
+    type: sidebar
+    badges: []
+    cards:
+      - square: false
+        columns: 1
+        type: grid
+        cards:
+          - type: custom:mini-media-player
+            entity: media_player.kichen
+            name: Kitchen
+            artwork: cover
+            source: icon
+            sound_mode: icon
+            replace_mute: play_pause
+            icon: mdi:cast-audio-variant
+          - type: custom:mini-media-player
+            entity: media_player.lounge
+            name: Lounge Homepod
+            artwork: cover
+            source: icon
+            sound_mode: icon
+            replace_mute: play_pause
+            icon: mdi:cast-audio-variant
+          - type: custom:mini-media-player
+            entity: media_player.lounge_apple_tv
+            artwork: cover
+            name: Lounge TV
+  - theme: ios-dark-mode
+    type: custom:vertical-layout
+    badges: []
+    cards:
+      - type: custom:mushroom-title-card
+        title: Hello, {{ user }} !
+        card_mod:
+          style: |
+            ha-card {
+              color: green;
+              font-family: "Helvetica", Bold;
+              font-size: 300px;
+              font-weight: bold
+              
+            }
+      - type: custom:mini-graph-card
+        name: Solar Forecast
+        icon: mdi:solar-power
+        entities:
+          - entity: sensor.power_production_now
+            name: TOTAL
+      - type: picture
+        image: >-
+          https://static.wikia.nocookie.net/bbc/images/f/f9/BBC_Radio_1_2022.png/revision/latest?cb=20220518194552
+        tap_action:
+          action: call-service
+          service: script.kitchen_radio_1
+          data: {}
+          target: {}
+        hold_action:
+          action: none
+        theme: iOS Theme
+      - type: grid
+        cards:
+          - type: picture
+            image: >-
+              https://static.wikia.nocookie.net/bbc/images/f/f9/BBC_Radio_1_2022.png/revision/latest?cb=20220518194552
+            tap_action:
+              action: call-service
+              service: script.kitchen_radio_1
+              data: {}
+              target: {}
+            hold_action:
+              action: none
+          - type: picture
+            image: >-
+              https://european-circuits.co.uk/wp-content/uploads/2019/08/R2-1.png
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+          - type: picture
+            image: https://demo.home-assistant.io/stub_config/t-shirt-promo.png
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+      - type: custom:swipe-card
+        parameters:
+          effect: coverflow
+          grabCursor: true
+          centeredSlides: true
+          slidesPerView: auto
+          coverflowEffect:
+            rotate: 50
+            stretch: 0
+            depth: 100
+            modifier: 1
+            slideShadows: true
+          pagination: null
+          type: bullets
+        cards:
+          - type: picture-entity
+            entity: camera.192_168_10_10
+            show_name: false
+            show_state: false
+            camera_view: auto
+resources:
+  - url: /local/mushroom.js
+    type: module
