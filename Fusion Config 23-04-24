@@ -1,0 +1,1077 @@
+views:
+  - name: Open Plan
+    id: 4367008470988
+    sections:
+      - type: horizontal-stack
+        sections:
+          - name: Actions
+            items:
+              - id: 4309824235578
+                type: button
+                entity_id: scene.home
+                name: Welcome
+              - id: 3179728154787
+                type: button
+                entity_id: scene.away
+                name: Leave
+              - id: 6988299349421
+                type: button
+                entity_id: scene.open_plan_all_on
+                name: All Lights On
+              - id: 9755014299043
+                type: button
+                entity_id: scene.open_plan_all_off
+                name: All Lights Off
+            id: 3581717690301
+          - name: People
+            items:
+              - id: 4274461623238
+                type: button
+                entity_id: person.ben
+              - id: 8954447181866
+                type: button
+                entity_id: person.sophie
+            id: 6956719088407
+        id: 1875320441853
+      - name: Lighting
+        items:
+          - id: 7513984542280
+            type: button
+            entity_id: light.hallway_ceiling
+            name: Hallway Ceiling
+            icon: mdi:led-strip-variant
+          - id: 5991373915247
+            type: button
+            entity_id: light.hallway_bench_seat
+            name: Bench Seat
+            icon: mdi:love-seat-outline
+          - id: 1895866525302
+            type: button
+            entity_id: light.lounge_ceiling_strip
+            name: Lounge Ceiling
+            icon: mdi:sofa-outline
+          - id: 6287375426437
+            type: button
+            entity_id: light.kitchen_ceiling_strip
+            name: Kitchen Ceiling
+            icon: mdi:tap
+          - id: 3149714851656
+            type: button
+            entity_id: light.hue_color_lamp_1
+            name: Island Pendants
+            icon: mdi:tap
+          - id: 3502742240025
+            type: button
+            entity_id: light.lounge_fireplace
+            icon: mdi:fireplace-off
+          - id: 3987147980043
+            type: button
+            entity_id: light.utility_ceiling_strip
+            name: Utility Ceiling
+            icon: mdi:washing-machine
+          - id: 4065195337094
+            type: button
+            entity_id: switch.adaptive_lighting_kitchen
+            name: Circadian Lighting
+          - id: 6114939630235
+            type: button
+            entity_id: switch.adaptive_lighting_adapt_color_kitchen
+            name: Auto Colour
+        id: 5534266445578
+      - name: Media
+        items:
+          - type: media
+            id: 1996486593803
+            conditional:
+              - entity_id: media_player.master_bedroom_sonos_amp
+              - entity_id: media_player.spotify_bentomo88
+              - entity_id: media_player.lounge_apple_tv
+          - id: 4332475311067
+            type: button
+            entity_id: media_player.master_bedroom_sonos_amp
+          - id: 9968149685351
+            type: button
+            entity_id: media_player.lounge_apple_tv
+            icon: simple-icons:appletv
+          - id: 1999113260178
+            type: button
+            entity_id: script.kitchen_radio_1
+            more_info: false
+            icon: simple-icons:sonos
+          - id: 5154025497796
+            type: button
+            entity_id: script.script_kitchen_radio2
+            icon: simple-icons:sonos
+        id: 1287914361914
+      - name: Energy
+        items:
+          - id: 5136436837698
+            type: button
+            entity_id: >-
+              sensor.octopus_energy_electricity_22j0093141_1610004939023_current_rate
+            name: Current Rate
+          - id: 2599140984401
+            type: button
+            entity_id: sensor.ss_grid_ct_power
+            name: Grid Load
+          - id: 2304696837889
+            type: button
+            entity_id: sensor.pv_aggregate_power
+            name: PV Power
+          - id: 8498087340322
+            type: button
+            entity_id: sensor.load_power
+            name: Inverter Load
+        id: 8687902346586
+      - name: Climate
+        items:
+          - id: 8334898806430
+            type: button
+            entity_id: climate.stiebel_eltron_isg_heat_circuit_2
+          - id: 6204304639632
+            type: button
+            entity_id: climate.stiebel_eltron_isg_heat_circuit_1
+          - id: 1164918572300
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_actual_temperature_water
+            name: Hot Water
+          - id: 7311202808558
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_compressor
+            name: Compressor
+          - id: 6392083124998
+            type: button
+            entity_id: sensor.hot_water_cop_today
+            name: Hot Water COP
+          - id: 3634076206097
+            type: button
+            entity_id: sensor.heating_cop_today
+            name: Heating COP Today
+        id: 5742658164137
+  - name: Security
+    id: 6416067849215
+    sections:
+      - name: Actions
+        items:
+          - id: 2884971445705
+            type: button
+            entity_id: script.arm_all_cctv_camera
+            name: Arm All CCTV
+            icon: mdi:alarm-arm-away-outline
+        id: 1149942153041
+      - name: Alarm System
+        items:
+          - id: 7868558432787
+            type: button
+            entity_id: alarm_control_panel.house_alarm
+          - id: 6881656638212
+            type: button
+            entity_id: binary_sensor.lounge
+            template:
+              state: |-
+                {% if is_state(entity_id, "on") %}
+                  Detected
+                {% else %}
+                  Clear
+                {% endif %}
+            name: Lounge
+          - id: 2554585209209
+            type: button
+            entity_id: binary_sensor.texecom_premier_elite_24_kitchen
+            template:
+              state: |-
+                {% if is_state(entity_id, "on") %}
+                  Detected
+                {% else %}
+                  Clear
+                {% endif %}
+            name: Kitchen
+          - id: 5480306979965
+            type: button
+            entity_id: binary_sensor.hallway
+            template:
+              state: |-
+                {% if is_state(entity_id, "on") %}
+                  Detected
+                {% else %}
+                  Clear
+                {% endif %}
+            name: Hallway
+          - id: 2353694057312
+            type: button
+            entity_id: binary_sensor.landing
+            template:
+              state: |-
+                {% if is_state(entity_id, "on") %}
+                  Detected
+                {% else %}
+                  Clear
+                {% endif %}
+            name: Landing
+          - id: 8370732321046
+            type: button
+            entity_id: binary_sensor.porch
+            template:
+              state: |-
+                {% if is_state(entity_id, "on") %}
+                  Detected
+                {% else %}
+                  Clear
+                {% endif %}
+            name: Porch
+          - id: 5356685715054
+            type: button
+            entity_id: binary_sensor.texecom_premier_elite_24_utility
+            template:
+              state: |-
+                {% if is_state(entity_id, "on") %}
+                  Detected
+                {% else %}
+                  Clear
+                {% endif %}
+            name: Utility
+          - id: 4138845868657
+            type: button
+            entity_id: binary_sensor.texecom_premier_elite_24_utility_door
+            template:
+              state: |-
+                {% if is_state(entity_id, "on") %}
+                  Open
+                {% else %}
+                  Closed
+                {% endif %}
+            icon: mdi:door
+            name: Utility Door
+        id: 8298609252938
+      - type: horizontal-stack
+        sections:
+          - name: Front Door
+            items:
+              - id: 7289551040243
+                type: camera
+                entity_id: camera.drive_main_2
+              - id: 6521068739537
+                type: button
+                entity_id: alarm_control_panel.drive_camera
+                name: Drive Camera
+              - id: 1140361127749
+                type: button
+                entity_id: switch.drive_siren_2
+                name: Siren
+              - id: 8623423073697
+                type: button
+                entity_id: light.drive_illuminator_2
+                name: Illuminator
+              - id: 2175407971333
+                type: button
+                entity_id: switch.drive_smart_motion_detection_2
+            id: 9275093665295
+        id: 9639372954510
+    icon: mdi:cctv
+  - name: Solar
+    id: 6538817883104
+    sections:
+      - name: Grid
+        items:
+          - id: 6246165086235
+            type: button
+            entity_id: sensor.ss_grid_voltage
+            name: Grid Voltage
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 200 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(0) }} Volts'
+            color: rgba(72,143,194,255)
+          - id: 4193923488563
+            type: button
+            entity_id: sensor.grid_frequency
+            name: Grid Frequency
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 49 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(0) }} Hz'
+            icon: mdi:frequency
+            color: rgba(72,143,194,255)
+          - id: 7624105548701
+            type: button
+            entity_id: sensor.ss_grid_ct_power
+            name: Grid Load
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} Watts'
+              color: |-
+                {% if states(entity_id,) | float > 0 %}
+                            rgba(72,143,194,255)
+                          {% else %}
+                            rgba(131,83,209,255)
+                          {% endif %}
+          - id: 8824995208457
+            type: button
+            entity_id: sensor.grid_use_today
+            name: Import Today
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} kWh'
+              color: |-
+                {% if states(entity_id,) | float > 0 %}
+                            rgba(72,143,194,255)
+                          {% else %}
+                            rgba(131,83,209,255)
+                          {% endif %}
+          - id: 2644610220600
+            type: button
+            entity_id: sensor.solar_export_today
+            name: Export Today
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} kWh'
+            color: ' rgba(131,83,209,255)'
+        id: 4490894986331
+      - name: Strings
+        items:
+          - id: 9682328357177
+            type: button
+            entity_id: sensor.pv1_power
+            name: String 1 Power
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} W'
+            color: rgba(255,152,0,255)
+          - id: 6279928773643
+            type: button
+            entity_id: sensor.pv1_voltage
+            name: String 1 Voltage
+            more_info: false
+            color: rgba(255,152,0,255)
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 100 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} V'
+            icon: mdi:current-dc
+          - id: 6658736042339
+            type: button
+            entity_id: sensor.pv2_power
+            name: String 2 Power
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} W'
+            color: rgba(255,152,0,255)
+          - id: 1091747934747
+            type: button
+            entity_id: sensor.pv2_voltage
+            name: String 2 Voltage
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 100 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} V'
+            color: rgba(255,152,0,255)
+            icon: mdi:current-dc
+          - id: 8096404569114
+            type: button
+            entity_id: sensor.pv_power_today
+            name: Generated Today
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} kWh'
+            color: rgba(255,152,0,255)
+          - id: 1032692233658
+            type: button
+            entity_id: sensor.self_consumed_solar_today
+            name: Self Consumption Today
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} kWh'
+            color: rgba(255,152,0,255)
+          - id: 4018267151506
+            type: button
+            entity_id: sensor.self_consumed_solar_percentage
+            name: Self Consumption
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} %'
+            color: rgba(11,157,88,255)
+            icon: mdi:leaf
+        id: 3505034451019
+      - name: Batteries
+        items:
+          - id: 5318914371787
+            type: button
+            entity_id: sensor.battery_soc
+            name: SOC
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 10 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} %'
+            color: rgba(77,182,172,255)
+          - id: 7106089556257
+            type: button
+            entity_id: sensor.ss_battery_power
+            name: Power
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} W'
+              color: |-
+                {% if states(entity_id,) | float > 0 %}
+                            rgba(77,182,172,255)
+                          {% else %}
+                            rgba(240,98,146,255)
+                          {% endif %}
+          - id: 2863037290239
+            type: button
+            entity_id: sensor.battery_voltage
+            name: Voltage
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 48 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} V'
+            color: rgba(240,98,146,255)
+          - id: 9241076086584
+            type: button
+            entity_id: sensor.battery_charge_today
+            name: Charge Today
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} kWh'
+            color: rgba(240,98,146,255)
+            icon: mdi:battery-arrow-up
+          - id: 773207194193
+            type: button
+            entity_id: sensor.battery_discharge_today
+            more_info: false
+            name: Discharge Today
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} kWh'
+            color: rgba(77,182,172,255)
+            icon: mdi:battery-arrow-down-outline
+          - id: 9159485406528
+            type: button
+            entity_id: sensor.battery_temperature
+            name: Temperature
+            more_info: false
+          - id: 2274020148801
+            type: button
+            entity_id: number.ss_battery_low_capacity
+            name: Low Threshold
+        id: 835663795950
+      - name: Inverter
+        items:
+          - id: 5884256930371
+            type: button
+            entity_id: sensor.load_power
+            name: Total Output Power
+            more_info: false
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} W'
+          - id: 822561740886
+            type: button
+            entity_id: sensor.essential_power
+            name: Off Grid Load
+            template:
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+              state: '{{ states(entity_id) | float | round(1) }} W'
+          - id: 2916197674180
+            type: button
+            entity_id: sensor.non_essential_power
+            name: On Grid Load
+            template:
+              state: '{{ states(entity_id) | float | round(1) }} W'
+              set_state: |-
+                {% if states(entity_id,) | float > 0 %}
+                            on
+                          {% else %}
+                            off
+                          {% endif %}
+        id: 1247541464525
+      - type: horizontal-stack
+        sections:
+          - name: Timer 1
+            items:
+              - id: 7046676369711
+                type: button
+                entity_id: select.ss_prog1_time
+                name: Time
+              - id: 5023545956187
+                type: button
+                entity_id: select.ss_prog1_charge
+                name: Mode
+                template:
+                  set_state: |-
+                    {% if states(entity_id) == 'Allow Grid' %}
+                      on
+                    {% else %}
+                      off
+                    {% endif %}
+                  state: '{{ states(entity_id) }}'
+              - id: 6470242693473
+                type: button
+                entity_id: number.ss_prog1_capacity
+                name: Battery
+            id: 8233596957435
+          - name: Timer 2
+            items:
+              - id: 7373223394308
+                type: button
+                entity_id: select.ss_prog2_time
+                name: Time
+              - id: 4512673657305
+                type: button
+                entity_id: select.ss_prog2_charge
+                name: Mode
+              - id: 445932807762
+                type: button
+                entity_id: number.ss_prog2_capacity
+                name: Battery
+            id: 6074843621834
+          - name: Timer 3
+            items:
+              - id: 5353239116140
+                type: button
+                entity_id: select.ss_prog3_time
+                name: Time
+              - id: 408937755293
+                type: button
+                entity_id: select.ss_prog2_charge
+                name: Mode
+              - id: 290470488161
+                type: button
+                entity_id: number.ss_prog2_capacity
+                name: Battery
+            id: 5213507403957
+        id: 2606539188882
+      - type: horizontal-stack
+        sections:
+          - name: Timer 4
+            items:
+              - id: 7283750760701
+                type: button
+                entity_id: select.ss_prog4_time
+                name: TIme
+              - id: 7439515097294
+                type: button
+                entity_id: select.ss_prog4_charge
+                name: Mode
+              - id: 255037627942
+                type: button
+                entity_id: number.ss_prog4_capacity
+                name: Battery
+            id: 3353917818834
+          - name: Timer 5
+            items:
+              - id: 7739234530699
+                type: button
+                entity_id: select.ss_prog5_time
+                name: Time
+              - id: 7448479385130
+                type: button
+                entity_id: select.ss_prog5_charge
+                name: Mode
+              - id: 8369548481478
+                type: button
+                entity_id: number.ss_prog5_capacity
+                name: Battery
+            id: 1231776298966
+          - name: Timer 6
+            items:
+              - id: 9014641967846
+                type: button
+                entity_id: select.ss_prog6_time
+                name: Time
+              - id: 9885989270858
+                type: button
+                entity_id: select.ss_prog6_charge
+                name: Mode
+              - id: 7423967682717
+                type: button
+                entity_id: number.ss_prog6_capacity
+                name: Battery
+            id: 6129131000958
+        id: 4373460958684
+  - name: Heat Pump
+    id: 5620407210935
+    sections:
+      - name: Actions
+        items:
+          - id: 8486509906402
+            type: button
+            entity_id: select.stiebel_eltron_isg_operation_mode
+            name: Mode Select
+          - id: 9635653216734
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_sg_ready_state
+            template:
+              state: |-
+                {% if is_state(entity_id, "2") %}
+                  Normal Operation
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "1") %}
+                  Blocked Operation
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "3") %}
+                  Encouraged Operation
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "on") %}
+                  Forced Operation
+                {% else %}
+                  
+                {% endif %}
+            name: Smart Grid State
+            icon: mdi:pylon
+          - id: 4892099973577
+            type: button
+            entity_id: script.heatpump_sg_ready_normal
+            name: Normal Mode
+            icon: mdi:heat-pump
+            more_info: false
+          - id: 3078788773490
+            type: button
+            entity_id: script.heatpump_sg_ready_blocked_operation
+            name: Blocked Mode
+            icon: mdi:heat-pump
+            more_info: false
+          - id: 9943105137530
+            type: button
+            entity_id: script.heatpump_sg_ready_encouraged_operation
+            name: Encouraged Mode
+            icon: mdi:heat-pump
+            more_info: false
+          - id: 8801288360240
+            type: button
+            entity_id: script.heatpump_sg_ready_forced_operation
+            name: Forced Mode
+            icon: mdi:heat-pump
+            more_info: false
+        id: 3803394065991
+      - name: Modes
+        items:
+          - id: 3714390172468
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_is_heating_boiler
+            name: Hot Water Mode
+          - id: 2410208346228
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_is_heating
+            name: Heating Mode
+          - id: 6441265516409
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_is_cooling
+            name: Cooling Mode
+        id: 4542000840045
+      - name: Target Temperatures
+        items:
+          - id: 1128648337524
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_target_temperature_hk_1
+            name: Upstairs Flow
+          - id: 9679488347095
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_target_temperature_hk_2
+            name: Downstairs Flow
+          - id: 2138173363822
+            type: button
+            entity_id: number.stiebel_eltron_isg_eco_temperature_target_hk2
+            name: Downstairs (Eco)
+            icon: mdi:leaf
+          - id: 1624158103526
+            type: button
+            entity_id: number.stiebel_eltron_isg_eco_temperature_target_hk1
+            name: Upstairs (Eco)
+            icon: mdi:leaf
+          - id: 6148505205562
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_target_temperature_water
+            name: Cylinder
+          - id: 1105549027360
+            type: button
+            entity_id: number.stiebel_eltron_isg_eco_water_temperature_target
+            name: Cylinder (Eco)
+            icon: mdi:leaf
+          - id: 8651140606640
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_target_temperature_buffer
+            name: Buffer
+          - id: 1070935834701
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_target_room_temperature_hk_1
+            name: Upstairs Rooms
+          - id: 6667157124288
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_target_room_temperature_hk_2
+            name: Downstairs Rooms
+        id: 9415796420874
+      - name: Actual Temperatures
+        items:
+          - id: 6503202342174
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_flow_temperature_wp1
+            name: Primary Flow
+          - id: 5904681321960
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_return_temperature_wp1
+            name: Primary Return
+          - id: 5374217654647
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_actual_temperature_buffer
+            name: Buffer
+          - id: 4129257478967
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_actual_temperature_water
+            name: Hot Water
+          - id: 3980586737378
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_hot_gas_temperature_wp1
+            name: Hot Gas
+          - id: 8412275736103
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_actual_room_temperature_hk_1
+            name: Upstairs Rooms
+          - id: 5616354284713
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_actual_room_temperature_hk_2
+            name: Downstairs Rooms
+          - id: 1227861254555
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_outdoor_temperature
+            name: Outdoor Sensor
+        id: 4544334320436
+      - name: System
+        items:
+          - id: 5016463582264
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_pump_hk1
+            name: Upstairs Pump
+          - id: 5491242756909
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_pump_hk2
+            name: Downstairs Pump
+          - id: 6160320012821
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_compressor
+            name: Compressor
+          - id: 1930419837317
+            type: button
+            entity_id: sensor.stiebel_eltron_isg_volume_stream_wp1
+            name: Flow Rate
+          - id: 7325068130747
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_nhz_stages_running
+            name: Backup Heater
+          - id: 5982429118238
+            type: button
+            entity_id: binary_sensor.stiebel_eltron_isg_evaporator_defrost
+            name: Defrost
+        id: 1415662938198
+      - name: Efficiency
+        items:
+          - id: 1354667425126
+            type: button
+            entity_id: sensor.heat_pump_consumed_heating_today
+            name: Heat Consumption
+          - id: 4820398467122
+            type: button
+            entity_id: sensor.heat_pump_consumed_water_heating_today
+            name: DHW Consumption
+          - id: 1805975791683
+            type: button
+            entity_id: sensor.heat_pump_produced_heating_today
+            name: Produced Heat
+          - id: 5724518566556
+            type: button
+            entity_id: sensor.heat_pump_produced_water_heating_today
+            name: Produced Water
+          - id: 5036313334735
+            type: button
+            entity_id: sensor.ashp_overall_efficiency_today
+            name: COP Today
+        id: 6591462099741
+  - name: Kitchen
+    id: 1581980706781
+    sections:
+      - name: Actions
+        items:
+          - id: 8204564135841
+            type: button
+            entity_id: scene.open_plan_all_on
+            name: All On
+          - id: 7656943586376
+            type: button
+            entity_id: scene.open_plan_all_off
+            name: All Off
+        id: 8039776616062
+      - name: Main Oven
+        items:
+          - id: 8627631754868
+            type: button
+            entity_id: sensor.main_oven_oven_job_state
+            template:
+              state: |-
+                {% if is_state(entity_id, "cooking") %}
+                  Cooking
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "preheat") %}
+                  Pre Heating
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "ready") %}
+                  Off
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "warming") %}
+                  Warming
+                {% else %}
+                  
+                {% endif %}
+            name: Main Oven
+            icon: mdi:oven
+          - id: 8644997641207
+            type: button
+            entity_id: sensor.main_oven_oven_completion_time
+            name: Completion Time
+            icon: mdi:timer
+          - id: 9461684276058
+            type: button
+            entity_id: sensor.main_oven_temperature_measurement
+            template:
+              state: '{{ states(entity_id) }}°'
+            icon: mdi:thermometer-lines
+            name: Temperature
+        id: 1124958365274
+      - name: Combi Oven
+        items:
+          - id: 5411890953847
+            type: button
+            entity_id: sensor.combi_oven_oven_job_state
+            template:
+              state: |-
+                {% if is_state(entity_id, "cooking") %}
+                  Cooking
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "preheat") %}
+                  Pre Heating
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "ready") %}
+                  Off
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "warming") %}
+                  Warming
+                {% else %}
+                  
+                {% endif %}
+            name: Combi Oven
+            icon: mdi:oven
+          - id: 6083945364898
+            type: button
+            entity_id: sensor.combi_oven_oven_completion_time
+            name: Completion Time
+            icon: mdi:timer
+          - id: 8328620174067
+            type: button
+            entity_id: sensor.combi_oven_temperature_measurement
+            name: Temperature
+            icon: mdi:thermometer-lines
+        id: 8482914619136
+      - name: Dishwasher
+        items:
+          - id: 1871871832708
+            type: button
+            entity_id: sensor.dishwasher_dishwasher_job_state
+            template:
+              state: |-
+                {% if is_state(entity_id, "none") %}
+                  Off
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "wash") %}
+                  Washing
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "rinse") %}
+                  Rinsing
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "drying") %}
+                  Drying
+                {% else %}
+                  
+                {% endif %}{% if is_state(entity_id, "finish") %}
+                  Finished
+                {% else %}
+                  
+                {% endif %}
+            name: Dishwasher
+            icon: mdi:dishwasher
+          - id: 6352967943310
+            type: button
+            entity_id: sensor.dishwasher_dishwasher_completion_time
+            name: Completion Time
+        id: 7150844603008
+sidebar:
+  - id: 9808111347377
+    type: divider
+  - id: 8781628896533
+    type: time
+  - id: 3172191963840
+    type: date
+  - id: 2344843220391
+    type: weather
+    entity_id: weather.home
+  - id: 7448809719962
+    type: weather_forecast
+    entity_id: weather.home
+    days_to_show: 5
+  - id: 6274798763668
+    type: divider
+  - id: 1371489707829
+    type: camera
+    entity_id: camera.drive_sub_2_2
+    stream: true
+  - id: 7044304054263
+    type: divider
+  - id: 4849111326438
+    type: sensor
+    entity_id: sensor.ss_grid_ct_power
+    prefix: 'Grid Load is '
+    suffix: Watts
+    date: false
+  - id: 1417858378881
+    type: radial
+    entity_id: sensor.battery_soc
+    name: House Battery
+  - id: 1782205050281
+    type: graph
+    entity_id: sensor.grid_use_today
+    stroke: 2
+    start_time:
+      '[object Object]': null
+    end_time:
+      '[object Object]': null
+  - id: 7261890332177
+    type: graph
+    entity_id: sensor.pv_power_today
+  - id: 2471561893309
+    type: sensor
+    entity_id: sensor.pv_aggregate_power
+    suffix: ' Watts'
+    prefix: 'Generating '
+  - id: 4915259359276
+    type: graph
+    entity_id: sensor.heat_pump_consumed_heating_today
+    name: Heating Power Use Today
+    period: day
+  - id: 2097376903714
+    type: graph
+    entity_id: sensor.heat_pump_produced_heating_today
+    name: Produced Heating Today
+  - id: 7256225712620
+    type: notifications
+theme: godis
+sidebarWidth: 330
+
